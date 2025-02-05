@@ -19,8 +19,13 @@ jobs:
       - name: Build with Maven
         run: mvn clean package
 
+      # - name: Zip artifact
+      #   run: zip -r functionapp.zip target/azure-functions/javafunctionapp-1738723791781
+
       - name: Zip artifact
-        run: zip -r functionapp.zip target/azure-functions/javafunctionapp-1738723791781
+        run: |
+          cd target/azure-functions
+          zip -r ../../functionapp.zip javafunctionapp-1738723791781
 
   deploy:
     runs-on: ubuntu-latest

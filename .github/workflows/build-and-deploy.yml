@@ -9,7 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-
       # ...existing code...
       - name: Set up Java
         uses: actions/setup-java@v3
@@ -21,7 +20,7 @@ jobs:
         run: mvn clean package
 
       - name: Zip artifact
-        run: zip -r functionapp.zip target/azure-functions/javafunctionappjpazure
+        run: zip -r functionapp.zip target/azure-functions/javafunctionapp-1738723791781
 
   deploy:
     runs-on: ubuntu-latest
@@ -29,13 +28,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      
       # ...existing code...
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
 
       - name: Deploy to Azure Function
         uses: azure/functions-action@v1

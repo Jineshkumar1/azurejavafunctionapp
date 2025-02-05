@@ -22,10 +22,15 @@ jobs:
       # - name: Zip artifact
       #   run: zip -r functionapp.zip target/azure-functions/javafunctionapp-1738723791781
 
-      - name: Zip artifact
+      # - name: Zip artifact
+      #   run: |
+      #     cd target/azure-functions
+      #     zip -r ../../functionapp.zip javafunctionapp-1738723791781
+
+      - name: Create function app package
         run: |
-          cd target/azure-functions
-          zip -r ../../functionapp.zip javafunctionapp-1738723791781
+          cd target/azure-functions/javafunctionapp-1738723791781
+          zip -r ../../../functionapp.zip *
 
       # Upload the zipped artifact as a workflow artifact
       - name: Upload artifact
@@ -57,6 +62,6 @@ jobs:
         uses: azure/functions-action@v1
         with:
           app-name: javafunctionappjpazure
-          package: ./functionapp.zip
+          package: functionapp.zip
           # respect-pom-xml: true
           # publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}

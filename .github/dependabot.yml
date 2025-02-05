@@ -1,32 +1,34 @@
 version: 2
 updates:
   # Maven dependency updates
-  - package-ecosystem: "maven"
-    directory: "/"
+  
+  - package-ecosystem: "maven"    # Monitors pom.xml for Java dependencies
+    directory: "/"                # Root directory containing pom.xml
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-      timezone: "UTC"
-    open-pull-requests-limit: 5
-    labels:
+      interval: "weekly"         # Checks every week
+      day: "monday"             # Runs on Mondays
+      time: "09:00"            # At 9 AM
+      timezone: "UTC"          # In UTC timezone
+    open-pull-requests-limit: 5  # Maximum 5 open PRs at a time
+    labels:                      # Automatic PR labels
       - "dependencies"
       - "maven"
-    target-branch: "main"
+    target-branch: "main"       # PRs target main branch 
     
   # GitHub Actions updates
-  - package-ecosystem: "github-actions"
-    directory: "/"
+
+  - package-ecosystem: "github-actions"  # Monitors workflow files
+    directory: "/"                       # Root directory containing .github/workflows
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "09:00"
-      timezone: "UTC"
-    open-pull-requests-limit: 3
-    labels:
+      interval: "weekly"                # Checks every week
+      day: "monday"                    # Runs on Mondays
+      time: "09:00"                   # At 9 AM
+      timezone: "UTC"                 # In UTC timezone
+    open-pull-requests-limit: 3         # Maximum 3 open PRs at a time
+    labels:                             # Automatic PR labels
       - "dependencies"
       - "github-actions"
-    target-branch: "main"
-    commit-message:
-      prefix: "ci:"
-      include: "scope"
+    target-branch: "main"              # PRs target main branch
+    commit-message:                     # Commit message format
+      prefix: "ci:"                    # Adds ci: prefix
+      include: "scope"                # Includes dependency scope

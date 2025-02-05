@@ -27,12 +27,26 @@ jobs:
           cd target/azure-functions
           zip -r ../../functionapp.zip javafunctionapp-1738723791781
 
+      # Upload the zipped artifact as a workflow artifact
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: functionapp
+          path: functionapp.zip
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
       - uses: actions/checkout@v3
 
+      # Download the zipped artifact
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: functionapp
+          path: .
+          
       # ...existing code...
       - name: Azure Login
         uses: azure/login@v1

@@ -23,6 +23,7 @@ jobs:
         run: |
           cd target/azure-functions/javafunctionapp-1738723791781
           zip -r ../../../functionapp.zip *
+          ls -la
 
       # Upload the zipped artifact as a workflow artifact
       - name: Upload artifact

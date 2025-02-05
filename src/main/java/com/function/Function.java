@@ -31,7 +31,7 @@ public class Function {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
 
-            return request.createResponseBuilder(HttpStatus.OK).body("Hello, Java Function!" ).build();
+            return request.createResponseBuilder(HttpStatus.OK).body("Hello, Jinesh Java Function!" ).build();
         
     }
 }
